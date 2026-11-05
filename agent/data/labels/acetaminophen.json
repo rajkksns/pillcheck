@@ -1,0 +1,22 @@
+{
+ "key": "acetaminophen",
+ "found": true,
+ "generic_name": [
+  "ACETAMINOPHEN"
+ ],
+ "brand_name": [
+  "Pain Reliever Extra Strength"
+ ],
+ "set_id": "0005aafa-08f8-4990-a54d-cc097195708f",
+ "effective_time": "20260102",
+ "fetched_on": "2026-11-04",
+ "url": "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=0005aafa-08f8-4990-a54d-cc097195708f",
+ "sections": {
+  "warnings": "Warnings Liver warning: This product contains acetaminophen. Severe liver damage may occur if you take more than 4,000 mg of acetaminophen in 24 hours with other drugs containing acetaminophen 3 or more alcoholic drinks every day while using this product Allergy alert: Acetaminophen may cause severe skin reactions. Symptoms may include: skin reddening blisters rash If a skin reaction occurs, stop use and seek medical help right away. Do not use if you are allergic to acetaminophen or any of the inactive ingredients in this product with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist. Ask a doctor before use if you have liver disease. Ask a doctor or pharmacist before use if you are taking the blood thinning drug warfarin. Stop use and ask a doctor if new symptoms occur pain gets worse or lasts more than 10 days fever gets worse or lasts more than 3 days redness or swelling is present These could be signs of a serious condition. If pregnant or breast-feeding, ask a health professional before use. Keep out of reach of children. In case of overdose, get medical help or contact a Poison Control Center right away. Prompt medical attention is critical for adults as well as for children even if you do not notice any signs or symptoms.",
+  "ask_doctor_or_pharmacist": "Ask a doctor or pharmacist before use if you are taking the blood thinning drug warfarin.",
+  "do_not_use": "Do not use if you are allergic to acetaminophen or any of the inactive ingredients in this product with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist.",
+  "stop_use": "Stop use and ask a doctor if new symptoms occur pain gets worse or lasts more than 10 days fever gets worse or lasts more than 3 days redness or swelling is present These could be signs of a serious condition.",
+  "indications_and_usage": "Uses temporarily relieves minor aches and pains due to: headache the common cold backache minor pain of arthritis toothache muscular aches premenstrual and menstrual cramps temporarily reduces fever",
+  "purpose": "Purpose Pain reliever/fever reducer"
+ }
+}

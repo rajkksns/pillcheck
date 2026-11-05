@@ -1,0 +1,8 @@
+{
+  "version": "2026-11-04",
+  "note": "PillCheck cites official US FDA drug labels, fetched from openFDA and cached in agent/data/labels/. Citation ids are '<medicine>:<label section>'.",
+  "sources": {"OPENFDA": "openFDA Drug Label API, U.S. Food and Drug Administration, https://open.fda.gov/apis/drug/label/"},
+  "items": [
+    {"id": "OPENFDA-LABELS", "source": "OPENFDA", "text": "Structured product labels: drug interactions, warnings, contraindications, boxed warnings, ask-a-doctor sections."}
+  ]
+}

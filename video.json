@@ -1,0 +1,15 @@
+{"title": "PillCheck", "subtitle": "What the official labels say about the medicines you take together. English, Tamil, Hindi.",
+ "tags": ["#strands-agents", "#social-good", "#health"],
+ "closing": "Code decides. The model explains. A person decides the dose.",
+ "scenes": [
+  {"title": "Two medicines, one warning", "caption": "Code finds the pair in the FDA label and quotes it; the model explains it plainly.",
+   "input": "I take warfarin for my heart. Can I also take Ecosprin that my neighbour gave me?",
+   "command": "python -m agent.app \"I take warfarin for my heart. Can I also take Ecosprin that my neighbour gave me?\""},
+  {"title": "Asked in Tamil", "caption": "Amazon Translate in, the same checks, Amazon Translate out.",
+   "input": "நான் warfarin எடுத்துக்கொள்கிறேன். தலைவலிக்கு Combiflam சாப்பிடலாமா?",
+   "command": "python -m agent.app \"நான் warfarin எடுத்துக்கொள்கிறேன். தலைவலிக்கு Combiflam சாப்பிடலாமா?\""},
+  {"title": "A medicine it cannot check", "caption": "No official label, no guess.",
+   "input": "Is Zorvitan okay with my metformin?", "command": "python -m agent.app \"Is Zorvitan okay with my metformin?\""},
+  {"title": "A dose question in Hindi", "caption": "A hook cancels every model call; a fixed reply sends them to a pharmacist.",
+   "input": "क्या मैं Glycomet की खुराक दोगुनी कर सकता हूँ?",
+   "command": "python -m agent.app \"क्या मैं Glycomet की खुराक दोगुनी कर सकता हूँ?\""}]}
