@@ -1,0 +1,127 @@
+{
+  "spec": {
+    "title": "PillCheck",
+    "subtitle": "What the official labels say about the medicines you take together. English, Tamil, Hindi.",
+    "tags": [
+      "#strands-agents",
+      "#social-good",
+      "#health"
+    ],
+    "closing": "Code decides. The model explains. A person decides the dose.",
+    "scenes": [
+      {
+        "title": "Two medicines, one warning",
+        "caption": "Code finds the pair in the FDA label and quotes it; the model explains it plainly.",
+        "input": "I take warfarin for my heart. Can I also take Ecosprin that my neighbour gave me?",
+        "command": "python -m agent.app \"I take warfarin for my heart. Can I also take Ecosprin that my neighbour gave me?\""
+      },
+      {
+        "title": "Asked in Tamil",
+        "caption": "Amazon Translate in, the same checks, Amazon Translate out.",
+        "input": "நான் warfarin எடுத்துக்கொள்கிறேன். தலைவலிக்கு Combiflam சாப்பிடலாமா?",
+        "command": "python -m agent.app \"நான் warfarin எடுத்துக்கொள்கிறேன். தலைவலிக்கு Combiflam சாப்பிடலாமா?\""
+      },
+      {
+        "title": "A medicine it cannot check",
+        "caption": "No official label, no guess.",
+        "input": "Is Zorvitan okay with my metformin?",
+        "command": "python -m agent.app \"Is Zorvitan okay with my metformin?\""
+      },
+      {
+        "title": "A dose question in Hindi",
+        "caption": "A hook cancels every model call; a fixed reply sends them to a pharmacist.",
+        "input": "क्या मैं Glycomet की खुराक दोगुनी कर सकता हूँ?",
+        "command": "python -m agent.app \"क्या मैं Glycomet की खुराक दोगुनी कर सकता हूँ?\""
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "title": "Two medicines, one warning",
+      "command": "python -m agent.app \"I take warfarin for my heart. Can I also take Ecosprin that my neighbour gave me?\"",
+      "exit": 0,
+      "evidence": [
+        "[graph] explainer -> checker started",
+        "[tool] check_pair {\"medicine_a\": \"warfarin\", \"medicine_b\": \"aspirin\"} (call 1)",
+        "[critic] pass 1: PASS",
+        "[graph] done: ['explainer', 'checker']",
+        "[plan] agent | 1 interaction(s) | 6273 ms"
+      ],
+      "output": [
+        "[labels] found ['warfarin', 'aspirin'] | no label none | 1 pair(s) linked by the labels",
+        "[graph] explainer -> checker started",
+        "[tool] check_pair {\"medicine_a\": \"warfarin\", \"medicine_b\": \"aspirin\"} (call 1)",
+        "[critic] pass 1: PASS",
+        "[graph] done: ['explainer', 'checker']",
+        "[plan] agent | 1 interaction(s) | 6273 ms",
+        "",
+        "The labels warn that taking aspirin together with warfarin can increase the risk of bleeding. Aspirin is an antiplatelet agent, and warfarin is an anticoagulant, so using them together may raise the chance of severe stomach bleeding or other bleeding problems.",
+        "",
+        "  [warfarin:drug_interactions] \"...that Can Increase the Risk of Bleeding Drug Class Specific Drugs Anticoagulants argatroban, dabigatran, bivalirudin, desirudin, heparin, lepirudin Antiplatelet Agents aspirin, cilostazol, clopidogrel, dipyridamole, prasugrel, ticlopidine Non-steroidal Anti-Inflammatory Agents celecoxib, diclofena\"",
+        "",
+        "Show this to your pharmacist or doctor before you change anything."
+      ]
+    },
+    {
+      "title": "Asked in Tamil",
+      "command": "python -m agent.app \"நான் warfarin எடுத்துக்கொள்கிறேன். தலைவலிக்கு Combiflam சாப்பிடலாமா?\"",
+      "exit": 0,
+      "evidence": [
+        "[graph] explainer -> checker started",
+        "[critic] pass 1: PASS",
+        "[graph] done: ['explainer', 'checker']",
+        "[plan] agent | 2 interaction(s) | 8791 ms"
+      ],
+      "output": [
+        "[labels] found ['warfarin', 'ibuprofen', 'acetaminophen'] | no label none | 2 pair(s) linked by the labels",
+        "[graph] explainer -> checker started",
+        "[critic] pass 1: PASS",
+        "[graph] done: ['explainer', 'checker']",
+        "[plan] agent | 2 interaction(s) | 8791 ms",
+        "",
+        "இப்யூபுரூஃபன் வயிற்றை எரிச்சலூட்டும் மற்றும் இரத்த உறைதலைப் பாதிக்கும் என்பதால் இப்யூபுரூஃபன் உடன் வார்ஃபரின் உடன் எடுத்துக்கொள்வது அசிட்டமினோபன் லேபிள் வார்ஃபரினுடன் பயன்படுத்துவதற்கு முன்பு ஒரு மருத்துவர் அல்லது மருந்தாளரிடம் கேட்க உங்களிடம் சொல்கிறது. இரண்டு மருந்துகளும் ஒரு சுகாதார நிபுணரிடம் கவனமாக மதிப்பாய்வு செய்ய வேண்டும்",
+        "",
+        "  [warfarin:drug_interactions] \"...Agents aspirin, cilostazol, clopidogrel, dipyridamole, prasugrel, ticlopidine Non-steroidal Anti-Inflammatory Agents celecoxib, diclofenac, diflunisal, fenoprofen, ibuprofen, indomethacin, ketoprofen, ketorolac, mefenamic acid, naproxen, oxaprozin, piroxicam, sulindac Serotonin Reuptake Inhibitor\"",
+        "",
+        "  [acetaminophen:warnings] \"...ask a doctor or pharmacist. Ask a doctor before use if you have liver disease. Ask a doctor or pharmacist before use if you are taking the blood thinning drug warfarin. Stop use and ask a doctor if new symptoms occur pain gets worse or lasts more than 10 days fever gets worse or lasts more than 3\"",
+        "",
+        "எதையும் மாற்றும் முன் இதை உங்கள் மருந்தாளர் அல்லது மருத்துவரிடம் காட்டுங்கள்."
+      ]
+    },
+    {
+      "title": "A medicine it cannot check",
+      "command": "python -m agent.app \"Is Zorvitan okay with my metformin?\"",
+      "exit": 0,
+      "evidence": [
+        "[plan] no_pairs | code answer, no model | 1897 ms"
+      ],
+      "output": [
+        "[labels] found ['metformin'] | no label ['zorvitan'] | 0 pair(s) linked by the labels",
+        "[plan] no_pairs | code answer, no model | 1897 ms",
+        "",
+        "I could not find an official label for: zorvitan. I will not guess about a medicine I cannot check. Please show the strip or box to your pharmacist. The official metformin label does not name your other medicine. That does not prove they are safe together.",
+        "",
+        "Show this to your pharmacist or doctor before you change anything."
+      ]
+    },
+    {
+      "title": "A dose question in Hindi",
+      "command": "python -m agent.app \"क्या मैं Glycomet की खुराक दोगुनी कर सकता हूँ?\"",
+      "exit": 0,
+      "evidence": [
+        "[safety] RED FLAG dose (double the dose, double, दोगुनी, खुराक) -> no model answer, fixed reply"
+      ],
+      "output": [
+        "[safety] RED FLAG dose (double the dose, double, दोगुनी, खुराक) -> no model answer, fixed reply",
+        "",
+        "यह सहायक दवा की खुराक बदलने, दोगुनी करने, छोड़ने या बंद करने के सवालों का जवाब नहीं देता। कृपया आज ही अपने फार्मासिस्ट या डॉक्टर से पूछें।",
+        "",
+        "कुछ भी बदलने से पहले इसे अपने फार्मासिस्ट या डॉक्टर को दिखाएं।"
+      ]
+    }
+  ],
+  "started": "2026-11-05 04:52:28",
+  "seconds": 66.5,
+  "file": "results/demo.mp4",
+  "under_3_min": true
+}
